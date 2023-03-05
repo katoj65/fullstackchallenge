@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\UsersWeatherFocustModel;
+use Illuminate\Testing\TestResponse;
 
 class ExampleTest extends TestCase
 {
@@ -27,4 +29,19 @@ class ExampleTest extends TestCase
         User::factory(20)->create();
         $this->assertEquals(20, User::all()->count());
     }
+
+
+public function test_endpoint_making_request(){
+
+$response=$this->get('/api',['firstname'=>'Joshua','lastname'=>'Kato','gender'=>'male','lat'=>'0.347596','long'=>'32.582520']);
+
+$response->assertStatus(200)
+
+->assertJson(['status'=>true]);
+
+}
+
+
+
+
 }
