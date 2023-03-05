@@ -54,7 +54,7 @@ alert(error);
 //fetch users
 async fetchUsers(){
 this.isLoading=true;
-axios.get('http://127.0.0.1:8000/api/users-information').then(response=>{
+axios.get('http://127.0.0.1:8000/api/').then(response=>{
 this.isLoading=false;
 this.response=response.data;
 }).catch(error=>{

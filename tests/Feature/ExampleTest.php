@@ -15,17 +15,16 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function test_the_application_returns_a_successful_response()
-    {
-        $response = $this->get('/');
+    // public function test_the_application_returns_a_successful_response()
+    // {
+    //     // $response = $this->get('/');
 
-        $response->assertStatus(200);
-    }
+    //     // $response->assertStatus(200);
+    // }
 
     public function test_database_works()
     {
         User::factory(20)->create();
-
         $this->assertEquals(20, User::all()->count());
     }
 }

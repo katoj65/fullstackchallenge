@@ -15,18 +15,5 @@ use App\Http\Controllers\Weather\UserWeatherForecustController;
 |
 */
 
-Route::get('/', function () {
-    return response()->json([
-        'message' => 'all systems are a go',
-        'users' => \App\Models\User::all(),
-    ]);
-});
-
-Route::get('/test',function(){
-return['some information'];
-});
-
-
-
-Route::get('/users-information',[UserWeatherForecustController::class,'index']);
+Route::get('/',[UserWeatherForecustController::class,'index']);
 

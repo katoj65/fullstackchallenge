@@ -8,6 +8,8 @@ export default {
 
 data(){return{
 tableData:[],
+dialogVisible:false,
+modalContent:null
 
 
 
@@ -40,6 +42,21 @@ weather:null});
 
 },
 
+show_modal(item){
+this.dialogVisible= true;
+this.modalContent={
+names:item.firstname+' '+item.lastname,
+gender:item.gender,
+weather:item.weather!=null?[
+{id:1, name:'Temperature',value: item.weather.data.current_weather.temperature},
+{id:2, name:'Timezone',value:item.weather.data.timezone},]:[]
+
+};
+}
+
+
+
+
 },
 
 mounted(){
@@ -70,6 +87,46 @@ text-transform: capitalize;
 
 <template>
      <el-card class="box-card">
+
+
+
+
+
+
+<!-----Modal-->
+<el-dialog v-model="dialogVisible" title="User Weather Updates" width="30%" draggable>
+<span>
+<h1 style="text-align:center;">
+
+{{ modalContent.names }}
+
+</h1>
+</span>
+<div>
+<table style="width:100%;" v-if="modalContent.weather!=null">
+<tbody>
+<tr v-for="w in modalContent.weather" :key="w.id">
+<th>
+{{ w.name }}
+</th>
+<td>
+{{ w.value }}
+</td>
+</tr>
+</tbody>
+</table>
+<div v-else>
+Check your internet connection .
+</div>
+</div>
+</el-dialog>
+
+
+<!-----End modal-->
+
+
+
+
     <template #header>
       <div class="card-header">
         <h1>Welcome to the Weather Challenge Application</h1>
@@ -79,14 +136,13 @@ text-transform: capitalize;
     <div>
 
 
-
 <!-- {{ tableData}} -->
+
 
 <table style="width:100%;">
 <thead>
 <tr>
-<th>First name</th>
-<th>Last name</th>
+<th>Names</th>
 <th>Gender</th>
 <th>Weather</th>
 </tr>
@@ -95,20 +151,18 @@ text-transform: capitalize;
 <tbody>
 <tr v-for=" t in tableData" :key="t.id">
 <td>
-{{ t.firstname }}
-</td>
 
-<td>
-{{ t.lastname }}
-</td>
+ {{ t.firstname }} {{ t.lastname }}
 
+
+</td>
 <td>
 {{ t.gender}}
 </td>
 <td>
 <div v-if="t.weather!=null">
 <p>Tempreture: {{ t.weather.data.current_weather.temperature}}</p>
-<p>Timezone: {{ t.weather.data.timezone }} </p>
+<div> <a href="#" @click="show_modal(t)">View Details</a></div>
 </div>
 <div v-else>
 Connection error
@@ -119,6 +173,14 @@ Connection error
 </tbody>
 </table>
 </div>
+
+
+
+
+
+
+
+
 </el-card>
 </template>
 
