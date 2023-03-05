@@ -112,6 +112,9 @@ text-align: center;
       <p><strong>By</strong><br/><br/> Joshua Kato</p>
       <p>katoj65@gmail.com</p>
       <p>Tel: +256 752567534</p>
+      <p><a href="https://twitter.com/katojosh" target="blank">Twitter</a></p>
+      <p><a href="https://www.linkedin.com/in/joshua-kato-3b09966a/" target="blank">LinkedIn</a> </p>
+      <p><a href="http://afrodjangoinitiatives.org/" target="blank">Website</a></p>
       </div>
       </el-aside>
       <el-main class="main demo-border">
